@@ -81,7 +81,7 @@ class SinglyLinkedList {
       for (let i = 0; i < index; i++) {
         currNode = currNode.next;
       }
-      return currNode.val;
+      return currNode;
     }
   }
 
@@ -92,5 +92,24 @@ class SinglyLinkedList {
       return true;
     }
     return false;
+  }
+
+  insert(index, val) {
+    if (index < 0 || index > this.length) {
+      return false;
+    } else if (index === 0) {
+      this.unshift(val);
+      return true;
+    } else if (index === this.length) {
+      this.push(val);
+      return true;
+    } else {
+      let newNode = new Node(val);
+      let prevNode = this.get(index - 1);
+      newNode.next = prevNode.next;
+      prevNode.next = newNode;
+      this.length++;
+      return true;
+    }
   }
 }
