@@ -112,4 +112,20 @@ class SinglyLinkedList {
       return true;
     }
   }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) {
+      return undefined;
+    } else if (index === 0) {
+      return this.shift();
+    } else if (index === this.length - 1) {
+      return this.pop();
+    } else {
+      let prevNode = this.get(index - 1);
+      let nodeToRemove = prevNode.next;
+      prevNode.next = nodeToRemove.next;
+      this.length--;
+      return nodeToRemove;
+    }
+  }
 }
