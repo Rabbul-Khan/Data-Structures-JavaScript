@@ -81,16 +81,16 @@ class SinglyLinkedList {
       for (let i = 0; i < index; i++) {
         currNode = currNode.next;
       }
-      return currNode;
+      return currNode.val;
     }
   }
+
+  set(index, val) {
+    let foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
 }
-
-let list = new SinglyLinkedList();
-
-list.push(1);
-list.push(2);
-list.push(3);
-
-console.log(list.get(-2));
-console.log('end');
