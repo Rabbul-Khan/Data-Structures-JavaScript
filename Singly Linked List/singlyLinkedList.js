@@ -24,4 +24,24 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (this.length === 0) {
+      return undefined;
+    } else {
+      let prevNode = this.head;
+      let currNode = this.head;
+      while (currNode.next !== null) {
+        prevNode = currNode;
+        currNode = currNode.next;
+      }
+      this.tail = prevNode;
+      this.tail.next = null;
+      this.length--;
+      if (this.length === 0) {
+        this.head = null;
+        this.tail = null;
+      }
+    }
+  }
 }
