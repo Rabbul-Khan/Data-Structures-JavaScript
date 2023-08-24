@@ -128,4 +128,19 @@ class SinglyLinkedList {
       return nodeToRemove;
     }
   }
+
+  reverse() {
+    let currNode = this.head;
+    this.head = this.tail;
+    this.tail = currNode;
+    let prevNode = null;
+    let nextNode;
+    while (nextNode !== null) {
+      nextNode = currNode.next;
+      currNode.next = prevNode;
+      prevNode = currNode;
+      currNode = nextNode;
+    }
+    return this;
+  }
 }
